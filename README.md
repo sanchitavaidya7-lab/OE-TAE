@@ -1,1392 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elegance Boutique | Women's Fashion</title>
 
-    <meta name="description"
-          content="Elegant women's clothing boutique offering stylish ethnic wear, western wear, sarees and accessories.">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-    <title>Elegance Boutique | Women's Clothing</title>
+body {
+    background: #fffaf7;
+    color: #342323;
+}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+header {
+    background: #fff;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 12px #00000010;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
 
-    <style>
-        * {
-            scroll-behavior: smooth;
-        }
+.logo {
+    font-size: 27px;
+    color: #a94f6b;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #fff8fb;
-            color: #292929;
-        }
+nav a {
+    text-decoration: none;
+    color: #342323;
+    margin-left: 22px;
+    font-size: 15px;
+}
 
-        .navbar {
-            box-shadow: 0 3px 12px rgba(0,0,0,.10);
-        }
+nav a:hover {
+    color: #b94f72;
+}
 
-        .navbar-brand,
-        .section-title,
-        .custom-card h4 {
-            color: #9b3f65 !important;
-        }
+.hero {
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 60px 8%;
+    background: linear-gradient(90deg, #f6dce2, #fff4ee);
+    gap: 30px;
+}
 
-        .nav-link {
-            font-weight: 600;
-            transition: .3s;
-        }
+.hero-text {
+    flex: 1;
+}
 
-        .nav-link:hover {
-            color: #9b3f65 !important;
-        }
+.hero-text h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1.15;
+    color: #71384c;
+}
 
-        .hero {
-            min-height: 620px;
-            display: flex;
-            align-items: center;
-            color: white;
+.hero-text p {
+    margin: 20px 0;
+    font-size: 17px;
+    line-height: 1.7;
+}
 
-            background:
-                linear-gradient(
-                    rgba(75,25,45,.65),
-                    rgba(75,25,45,.65)
-                ),
-                url("https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1600&q=80")
-                center/cover;
-        }
+.btn {
+    display: inline-block;
+    padding: 13px 27px;
+    background: #a94f6b;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+}
 
-        .hero h1 {
-            font-size: clamp(40px, 6vw, 68px);
-            font-weight: 700;
-        }
+.btn:hover {
+    background: #78354d;
+}
 
-        .hero p {
-            font-size: 19px;
-            max-width: 750px;
-        }
+.hero img {
+    width: 46%;
+    max-height: 430px;
+    object-fit: cover;
+    border-radius: 160px 160px 8px 8px;
+}
 
-        .btn-main {
-            background: #e8a0b8;
-            color: #222;
-            border: none;
-            font-weight: bold;
-            padding: 12px 27px;
-            border-radius: 25px;
-            transition: .3s;
-        }
+.section {
+    padding: 65px 8%;
+    text-align: center;
+}
 
-        .btn-main:hover {
-            background: #f5c4d4;
-            color: #222;
-            transform: translateY(-3px);
-        }
+.section h2 {
+    font-family: Georgia, serif;
+    color: #71384c;
+    font-size: 36px;
+    margin-bottom: 12px;
+}
 
-        section {
-            padding: 70px 0;
-        }
+.subtitle {
+    color: #777;
+    margin-bottom: 35px;
+}
 
-        .section-title {
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
 
-        .section-subtitle {
-            color: #666;
-            margin-bottom: 35px;
-        }
+.product {
+    background: white;
+    padding-bottom: 22px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px #0000000c;
+    transition: transform 0.3s;
+}
 
-        .custom-card {
-            background: white;
-            border: none;
-            border-radius: 15px;
-            padding: 25px;
-            height: 100%;
-            box-shadow: 0 5px 20px rgba(0,0,0,.08);
-            transition: .3s;
-        }
+.product:hover {
+    transform: translateY(-6px);
+}
 
-        .custom-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 25px rgba(0,0,0,.13);
-        }
+.product img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
 
-        .about-box {
-            background: white;
-            border-radius: 18px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,.08);
-        }
+.product h3 {
+    margin: 18px 0 8px;
+}
 
-        .product-card {
-            overflow: hidden;
-            padding: 0;
-        }
+.price {
+    color: #a94f6b;
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
 
-        .product-card img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover;
-            transition: .4s;
-        }
+.about {
+    background: #f7e7e8;
+    padding: 55px 12%;
+    text-align: center;
+    line-height: 1.8;
+}
 
-        .product-card:hover img {
-            transform: scale(1.04);
-        }
+.about h2 {
+    font-family: Georgia, serif;
+    color: #71384c;
+    margin-bottom: 15px;
+    font-size: 34px;
+}
 
-        .product-content {
-            padding: 22px;
-        }
+.contact {
+    text-align: center;
+    padding: 55px 20px;
+}
 
-        .price {
-            color: #b13e69;
-            font-size: 21px;
-            font-weight: bold;
-        }
+.contact p {
+    margin: 12px 0 22px;
+}
 
-        .tag {
-            display: inline-block;
-            background: #fbe4ed;
-            color: #9b3f65;
-            padding: 8px 14px;
-            border-radius: 20px;
-            margin: 5px 4px 5px 0;
-            font-size: 14px;
-            font-weight: 600;
-        }
+footer {
+    background: #482d37;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
 
-        .ad-box {
-            background:
-                linear-gradient(
-                    rgba(75,25,45,.70),
-                    rgba(75,25,45,.70)
-                ),
-                url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1500&q=80")
-                center/cover;
+@media (max-width: 750px) {
+    header {
+        padding: 18px 5%;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-            color: white;
-            padding: 70px 30px;
-            border-radius: 20px;
-            text-align: center;
-        }
+    nav a {
+        margin: 0 7px;
+        font-size: 13px;
+    }
 
-        .ad-box h2 {
-            font-size: clamp(30px, 5vw, 48px);
-            font-weight: bold;
-        }
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 45px 6%;
+    }
 
-        .offer-badge {
-            display: inline-block;
-            background: #e8a0b8;
-            color: #222;
-            padding: 10px 18px;
-            border-radius: 25px;
-            font-weight: bold;
-        }
+    .hero img {
+        width: 100%;
+        max-height: 350px;
+    }
 
-        .social-card {
-            border-left: 5px solid #9b3f65;
-        }
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
 
-        .email-section {
-            background: #f9edf2;
-        }
+    .product img {
+        height: 210px;
+    }
 
-        .email-wrapper {
-            max-width: 850px;
-            margin: auto;
-        }
+    .section {
+        padding: 45px 5%;
+    }
+}
 
-        .email-subject {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 8px 8px 0 0;
-            border: 1px solid #ddd;
-        }
+@media (max-width: 420px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
 
-        .email-card {
-            background: white;
-            border: 1px solid #ddd;
-            overflow: hidden;
-            box-shadow: 0 5px 18px rgba(0,0,0,.08);
-        }
-
-        .email-banner {
-            position: relative;
-        }
-
-        .email-banner img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-        }
-
-        .email-banner-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: 90%;
-            text-align: center;
-            color: white;
-            text-shadow: 1px 2px 5px rgba(0,0,0,.7);
-        }
-
-        .email-banner-text h2 {
-            font-size: clamp(28px,5vw,45px);
-            font-weight: bold;
-        }
-
-        .email-offer {
-            position: absolute;
-            right: 25px;
-            top: 20px;
-            background: #e8a0b8;
-            color: #222;
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-weight: bold;
-            font-size: 13px;
-        }
-
-        .email-content {
-            padding: 30px;
-        }
-
-        .email-button {
-            display: inline-block;
-            background: #9b3f65;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .contact-box {
-            background: #fbe4ed;
-            border-radius: 18px;
-            padding: 30px;
-        }
-
-        footer {
-            background: #4d2435;
-            color: white;
-            text-align: center;
-            padding: 30px 15px;
-        }
-
-        @media(max-width:576px) {
-
-            .hero {
-                min-height: 550px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            section {
-                padding: 50px 0;
-            }
-
-            .email-banner img {
-                height: 230px;
-            }
-
-            .email-offer {
-                width: 62px;
-                height: 62px;
-                font-size: 11px;
-                right: 15px;
-                top: 15px;
-            }
-
-            .email-content {
-                padding: 22px;
-            }
-        }
-    </style>
+    .product img {
+        height: 300px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-
-<nav class="navbar navbar-expand-lg bg-white sticky-top">
-
-    <div class="container">
-
-        <a class="navbar-brand" href="#">
-            👗 Elegance Boutique
-        </a>
-
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarMenu">
-
-            <span class="navbar-toggler-icon"></span>
-
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarMenu">
-
-            <ul class="navbar-nav ms-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#products">Collection</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#audience">Audience</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#seo">SEO</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#social">Social Media</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#advertisement">Advertisement</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#email">Email</a>
-                </li>
-
-            </ul>
-
-        </div>
-    </div>
-</nav>
-
-
-<!-- HERO -->
-
-<header class="hero" id="home">
-
-    <div class="container">
-
-        <div class="col-lg-8">
-
-            <p class="fw-bold">
-                DIGITAL MARKETING PROJECT
-            </p>
-
-            <h1>
-                Style That Speaks for You
-            </h1>
-
-            <p class="mt-3">
-                Discover elegant, stylish and affordable women's
-                clothing designed to make every occasion special.
-            </p>
-
-            <p>
-                Explore ethnic wear, western outfits, sarees,
-                dresses and fashionable accessories.
-            </p>
-
-            <a href="#products"
-               class="btn btn-main mt-3">
-                Explore Collection
-            </a>
-
-        </div>
-
-    </div>
-
+<header>
+    <div class="logo">✿ Elegance Boutique</div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#collection">Collection</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
-
-<!-- ABOUT -->
-
-<section id="about">
-
-    <div class="container">
-
-        <h2 class="section-title text-center">
-            1. Boutique Profile
-        </h2>
-
-        <p class="section-subtitle text-center">
-            About our women's clothing boutique
+<section class="hero" id="home">
+    <div class="hero-text">
+        <h1>Style That Makes You Shine</h1>
+        <p>
+            Discover beautiful ethnic wear, elegant dresses,
+            and timeless fashion made for every woman.
         </p>
-
-        <div class="about-box mb-4">
-
-            <h3 class="section-title">
-                About Elegance Boutique
-            </h3>
-
-            <p>
-                Elegance Boutique is a women's clothing boutique
-                offering fashionable, comfortable and affordable
-                clothing for modern women.
-            </p>
-
-            <p>
-                Our collection includes ethnic wear, western wear,
-                sarees, dresses and stylish accessories suitable
-                for everyday wear and special occasions.
-            </p>
-
-        </div>
-
-
-        <div class="row g-4">
-
-            <div class="col-md-4">
-                <div class="custom-card">
-                    <h4>Business Name</h4>
-                    <p>Elegance Boutique</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="custom-card">
-                    <h4>Business Type</h4>
-                    <p>Women's Clothing Boutique</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="custom-card">
-                    <h4>Location</h4>
-                    <p>Nagpur, Maharashtra, India</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="custom-card">
-                    <h4>Contact</h4>
-                    <p>+91 98765 43210</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="custom-card">
-                    <h4>Email</h4>
-                    <p>eleganceboutique@example.com</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="custom-card">
-                    <h4>Shopping</h4>
-                    <p>Offline & Online Orders</p>
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="about-box mt-4">
-
-            <h3 class="section-title">
-                Our USP
-            </h3>
-
-            <ul>
-
-                <li>Trendy and stylish clothing</li>
-
-                <li>Affordable prices</li>
-
-                <li>Quality fabrics</li>
-
-                <li>New collections regularly</li>
-
-                <li>Personalized customer service</li>
-
-                <li>Online ordering facility</li>
-
-            </ul>
-
-        </div>
-
+        <a href="#collection" class="btn">Explore Collection</a>
     </div>
 
+    <img
+      src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=85"
+      alt="Elegant women's fashion">
 </section>
 
-
-<!-- PRODUCTS -->
-
-<section id="products" class="bg-light">
-
-    <div class="container">
-
-        <h2 class="section-title text-center">
-            2. Latest Collection
-        </h2>
-
-        <p class="section-subtitle text-center">
-            Fashionable outfits for every occasion
-        </p>
-
-
-        <div class="row g-4">
-
-
-            <!-- PRODUCT 1 -->
-
-            <div class="col-md-4">
-
-                <div class="custom-card product-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=80"
-                        alt="Traditional Saree">
-
-                    <div class="product-content">
-
-                        <h4>
-                            Designer Saree
-                        </h4>
-
-                        <p>
-                            Elegant sarees perfect for festivals,
-                            weddings and special occasions.
-                        </p>
-
-                        <p class="price">
-                            ₹1,499 onwards
-                        </p>
-
-                        <button
-                            class="btn btn-main"
-                            onclick="showMessage('Designer Saree')">
-
-                            Shop Now
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUCT 2 -->
-
-            <div class="col-md-4">
-
-                <div class="custom-card product-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=900&q=80"
-                        alt="Women's Dress">
-
-                    <div class="product-content">
-
-                        <h4>
-                            Stylish Dresses
-                        </h4>
-
-                        <p>
-                            Comfortable and trendy dresses
-                            for casual and party wear.
-                        </p>
-
-                        <p class="price">
-                            ₹899 onwards
-                        </p>
-
-                        <button
-                            class="btn btn-main"
-                            onclick="showMessage('Stylish Dress')">
-
-                            Shop Now
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUCT 3 -->
-
-            <div class="col-md-4">
-
-                <div class="custom-card product-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=900&q=80"
-                        alt="Ethnic Wear">
-
-                    <div class="product-content">
-
-                        <h4>
-                            Ethnic Wear
-                        </h4>
-
-                        <p>
-                            Beautiful ethnic outfits for festivals,
-                            celebrations and family occasions.
-                        </p>
-
-                        <p class="price">
-                            ₹1,199 onwards
-                        </p>
-
-                        <button
-                            class="btn btn-main"
-                            onclick="showMessage('Ethnic Wear')">
-
-                            Shop Now
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- TARGET AUDIENCE -->
-
-<section id="audience">
-
-    <div class="container">
-
-        <h2 class="section-title text-center">
-            3. Target Audience
-        </h2>
-
-        <p class="section-subtitle text-center">
-            Customers who are most likely to purchase our products
-        </p>
-
-
-        <div class="row g-4">
-
-
-            <div class="col-md-4">
-
-                <div class="custom-card text-center">
-
-                    <h4>👩 College Students</h4>
-
-                    <p>
-                        Age: 18–25
-                    </p>
-
-                    <p>
-                        Interested in trendy, affordable and
-                        comfortable outfits.
-                    </p>
-
-                    <span class="tag">
-                        Instagram
-                    </span>
-
-                    <span class="tag">
-                        Reels
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-4">
-
-                <div class="custom-card text-center">
-
-                    <h4>👩‍💼 Working Women</h4>
-
-                    <p>
-                        Age: 22–40
-                    </p>
-
-                    <p>
-                        Looking for stylish office wear,
-                        casual wear and party outfits.
-                    </p>
-
-                    <span class="tag">
-                        Facebook
-                    </span>
-
-                    <span class="tag">
-                        Instagram
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-4">
-
-                <div class="custom-card text-center">
-
-                    <h4>👩‍👩‍👧 Fashion Buyers</h4>
-
-                    <p>
-                        Age: 25–50
-                    </p>
-
-                    <p>
-                        Interested in sarees, ethnic wear,
-                        festive collections and accessories.
-                    </p>
-
-                    <span class="tag">
-                        WhatsApp
-                    </span>
-
-                    <span class="tag">
-                        Online Shopping
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SEO -->
-
-<section id="seo" class="bg-light">
-
-    <div class="container">
-
-        <h2 class="section-title text-center">
-            4. SEO Keywords
-        </h2>
-
-        <p class="section-subtitle text-center">
-            Keywords used to promote the boutique online
-        </p>
-
-
-        <div class="about-box">
-
-            <h4>
-                Short-Tail Keywords
-            </h4>
-
-            <div class="mb-4">
-
-                <span class="tag">Women's Clothing</span>
-
-                <span class="tag">Ladies Wear</span>
-
-                <span class="tag">Fashion Boutique</span>
-
-                <span class="tag">Sarees</span>
-
-                <span class="tag">Ethnic Wear</span>
-
-                <span class="tag">Dresses</span>
-
-            </div>
-
-
-            <h4>
-                Long-Tail Keywords
-            </h4>
-
-            <div class="mb-4">
-
-                <span class="tag">
-                    Best women's clothing boutique
-                </span>
-
-                <span class="tag">
-                    Affordable ladies wear online
-                </span>
-
-                <span class="tag">
-                    Designer sarees in Nagpur
-                </span>
-
-                <span class="tag">
-                    Trendy dresses for women
-                </span>
-
-                <span class="tag">
-                    Ethnic wear for women
-                </span>
-
-            </div>
-
-
-            <h4>
-                SEO Strategy
-            </h4>
-
-            <ul>
-
-                <li>
-                    Use keywords in product titles.
-                </li>
-
-                <li>
-                    Add keywords to product descriptions.
-                </li>
-
-                <li>
-                    Use location-based keywords.
-                </li>
-
-                <li>
-                    Upload high-quality product images.
-                </li>
-
-                <li>
-                    Collect genuine customer reviews.
-                </li>
-
-                <li>
-                    Regularly update the website.
-                </li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SOCIAL MEDIA -->
-
-<section id="social">
-
-    <div class="container">
-
-        <h2 class="section-title text-center">
-            5. Social Media Marketing
-        </h2>
-
-        <p class="section-subtitle text-center">
-            Promoting the boutique through social media
-        </p>
-
-
-        <div class="row g-4">
-
-
-            <div class="col-md-4">
-
-                <div class="custom-card social-card">
-
-                    <h4>
-                        Instagram
-                    </h4>
-
-                    <p>
-                        Upload product photos, fashion Reels,
-                        new arrivals, styling ideas and offers.
-                    </p>
-
-                    <strong>
-                        Sample Post:
-                    </strong>
-
-                    <p>
-                        "New season, new style! ✨
-                        Discover our latest women's collection."
-                    </p>
-
-                    <span class="tag">
-                        #EleganceBoutique
-                    </span>
-
-                    <span class="tag">
-                        #WomensFashion
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-4">
-
-                <div class="custom-card social-card">
-
-                    <h4>
-                        Facebook
-                    </h4>
-
-                    <p>
-                        Share new collections, discounts,
-                        customer reviews and festive offers.
-                    </p>
-
-                    <strong>
-                        Sample Post:
-                    </strong>
-
-                    <p>
-                        "Upgrade your wardrobe with our
-                        latest collection. Shop your style today!"
-                    </p>
-
-                    <span class="tag">
-                        #Fashion
-                    </span>
-
-                    <span class="tag">
-                        #Boutique
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-4">
-
-                <div class="custom-card social-card">
-
-                    <h4>
-                        WhatsApp
-                    </h4>
-
-                    <p>
-                        Send new collection photos,
-                        catalogues, offers and order updates.
-                    </p>
-
-                    <strong>
-                        Sample Message:
-                    </strong>
-
-                    <p>
-                        "Hello! Our new women's collection
-                        has arrived. Contact us for prices
-                        and availability."
-                    </p>
-
-                    <span class="tag">
-                        Direct Enquiry
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="about-box mt-4">
-
-            <h4 class="section-title">
-                Weekly Content Plan
-            </h4>
-
-            <div class="row">
-
-                <div class="col-md-3">
-                    <strong>Monday</strong>
-                    <p>New Arrival</p>
-                </div>
-
-                <div class="col-md-3">
-                    <strong>Wednesday</strong>
-                    <p>Fashion Reel</p>
-                </div>
-
-                <div class="col-md-3">
-                    <strong>Friday</strong>
-                    <p>Special Offer</p>
-                </div>
-
-                <div class="col-md-3">
-                    <strong>Sunday</strong>
-                    <p>Customer Review</p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ADVERTISEMENT -->
-
-<section id="advertisement" class="bg-light">
-
-    <div class="container">
-
-        <h2 class="section-title text-center">
-            6. Advertisement Design
-        </h2>
-
-        <p class="section-subtitle text-center">
-            Sample online advertisement
-        </p>
-
-
-        <div class="ad-box">
-
-            <span class="offer-badge">
-                ✨ FESTIVE SALE
-            </span>
-
-            <p class="fw-bold mt-4">
-                ELEGANCE BOUTIQUE
-            </p>
-
-            <h2>
-                Your Style. Your Statement. 💕
-            </h2>
-
-            <p class="fs-5">
-                Discover our latest collection of
-                fashionable women's clothing.
-            </p>
-
-            <p>
-                👗 Dresses
-                &nbsp;&nbsp;
-                🥻 Sarees
-                &nbsp;&nbsp;
-                ✨ Ethnic Wear
-            </p>
-
-            <button
-                class="btn btn-main mt-3"
-                onclick="showMessage('Festive Sale')">
-
-                SHOP NOW
-
+<section class="section" id="collection">
+    <h2>Our Collection</h2>
+    <p class="subtitle">Find your perfect style, made for you.</p>
+
+    <div class="products">
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80"
+                 alt="Traditional ethnic fashion">
+            <h3>Ethnic Wear</h3>
+            <p class="price">₹1,499</p>
+            <button class="btn" onclick="order('Ethnic Wear')">
+                Enquire Now
             </button>
-
-            <p class="mt-4 mb-0">
-
-                <strong>
-                    Special Offer:
-                </strong>
-
-                Get up to 30% OFF on selected products.
-
-            </p>
-
         </div>
 
-    </div>
-
-</section>
-
-
-<!-- EMAIL MARKETING -->
-
-<section id="email" class="email-section">
-
-    <div class="container">
-
-        <h2 class="section-title text-center">
-            7. Email Marketing
-        </h2>
-
-        <p class="section-subtitle text-center">
-            Sample promotional email campaign
-        </p>
-
-
-        <div class="email-wrapper">
-
-
-            <div class="email-subject">
-
-                <strong>
-                    Subject:
-                </strong>
-
-                ✨ New Women's Collection – Up to 30% OFF!
-
-            </div>
-
-
-            <div class="email-card">
-
-
-                <div class="email-banner">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=80"
-                        alt="Women's Fashion">
-
-                    <div class="email-banner-text">
-
-                        <h2>
-                            New Collection
-                        </h2>
-
-                        <p>
-                            Stylish • Elegant • Affordable
-                        </p>
-
-                    </div>
-
-
-                    <div class="email-offer">
-
-                        UP TO
-                        <br>
-                        30%
-                        <br>
-                        OFF
-
-                    </div>
-
-                </div>
-
-
-                <div class="email-content">
-
-                    <h3 class="section-title">
-                        Discover Our Latest Collection 💕
-                    </h3>
-
-                    <p>
-                        Dear Customer,
-                    </p>
-
-                    <p>
-                        Looking for stylish and affordable
-                        women's clothing? Elegance Boutique
-                        brings you our latest collection of
-                        dresses, sarees, ethnic wear and
-                        fashionable outfits.
-                    </p>
-
-                    <p>
-                        Find your perfect style for every
-                        occasion.
-                    </p>
-
-
-                    <strong>
-                        Why Shop With Us?
-                    </strong>
-
-                    <ul class="mt-2">
-
-                        <li>
-                            Trendy designs
-                        </li>
-
-                        <li>
-                            Quality fabrics
-                        </li>
-
-                        <li>
-                            Affordable prices
-                        </li>
-
-                        <li>
-                            New arrivals regularly
-                        </li>
-
-                        <li>
-                            Easy ordering
-                        </li>
-
-                    </ul>
-
-
-                    <div class="text-center my-4">
-
-                        <span class="offer-badge">
-                            🎉 UP TO 30% OFF
-                        </span>
-
-                        <p class="mt-3">
-                            Limited-time offer on selected
-                            products.
-                        </p>
-
-                    </div>
-
-
-                    <div class="text-center">
-
-                        <a href="#products"
-                           class="email-button">
-
-                            EXPLORE COLLECTION
-
-                        </a>
-
-                    </div>
-
-
-                    <hr class="my-4">
-
-
-                    <p>
-                        Regards,
-                        <br>
-
-                        <strong>
-                            Elegance Boutique
-                        </strong>
-
-                        <br>
-
-                        📞 +91 98765 43210
-
-                        <br>
-
-                        📧 eleganceboutique@example.com
-
-                        <br>
-
-                        📍 Nagpur, Maharashtra
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section>
-
-    <div class="container">
-
-        <div class="contact-box text-center">
-
-            <h2 class="section-title">
-                Find Your Perfect Style
-            </h2>
-
-            <p>
-                Explore our latest women's clothing
-                collection and choose your favourite outfit.
-            </p>
-
-            <p>
-
-                📞 <strong>+91 98765 43210</strong>
-
-                &nbsp;&nbsp;
-
-                📧 <strong>
-                    eleganceboutique@example.com
-                </strong>
-
-            </p>
-
-            <button
-                class="btn btn-main"
-                onclick="showMessage('Elegance Boutique')">
-
-                Contact Boutique
-
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=80"
+                 alt="Elegant women's dress">
+            <h3>Party Dresses</h3>
+            <p class="price">₹1,999</p>
+            <button class="btn" onclick="order('Party Dresses')">
+                Enquire Now
             </button>
+        </div>
 
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80"
+                 alt="Fashion handbag">
+            <h3>Fashion Accessories</h3>
+            <p class="price">₹799</p>
+            <button class="btn" onclick="order('Fashion Accessories')">
+                Enquire Now
+            </button>
         </div>
 
     </div>
-
 </section>
 
+<section class="about" id="about">
+    <h2>About Our Boutique</h2>
+    <p>
+        Welcome to Elegance Boutique, where fashion meets confidence.
+        We bring you handpicked styles, beautiful designs, and
+        fashionable outfits to make every occasion special.
+    </p>
+</section>
 
-<!-- FOOTER -->
+<section class="contact" id="contact">
+    <h2>Let's Connect 💗</h2>
+    <p>Have a question about our collection? Contact us today.</p>
+    <a href="https://wa.me/91XXXXXXXXXX" class="btn">
+        Chat on WhatsApp
+    </a>
+</section>
 
 <footer>
-
-    <strong>
-        Digital Marketing Project
-    </strong>
-
-    <p class="mb-1">
-        Promoting a Women's Clothing Boutique
-    </p>
-
-    <p class="mb-1">
-        Elegance Boutique
-    </p>
-
-    <hr>
-
-    <p class="mb-0">
-
-        <strong>
-            Created by: __________________
-        </strong>
-
-        <br>
-
-        Roll No: __________________
-
-    </p>
-
+    <p>© 2026 Elegance Boutique | Fashion With Love ✿</p>
 </footer>
 
-
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
-
-
 <script>
+function order(product) {
+    const phone = "91XXXXXXXXXX";
+    const message = "Hi! I am interested in " + product +
+                    " from Elegance Boutique.";
+    const url = "https://wa.me/" + phone +
+                "?text=" + encodeURIComponent(message);
 
-    function showMessage(item) {
-
-        alert(
-            "Thank you for your interest in " +
-            item +
-            "!\n\n" +
-            "Please contact Elegance Boutique at " +
-            "+91 98765 43210 for more details."
-        );
-
-    }
-
+    window.open(url, "_blank");
+}
 </script>
 
 </body>
